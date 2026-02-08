@@ -2,6 +2,8 @@
   "name": "spiderlink",
   "version": "1.0.0",
   "description": "Spider-Society Communication Platform",
+  "license": "MIT",
+  "private": true,
   "main": "server.js",
   "engines": {
     "node": ">=18.0.0"
