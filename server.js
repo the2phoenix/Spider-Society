@@ -30,12 +30,18 @@ mongoose.connect(process.env.MONGODB_URI)
     })
     .catch(err => console.error('❌ MongoDB Connection Error:', err));
 
+const isProduction = process.env.NODE_ENV === 'production' || process.env.RENDER;
+const productionUrl = 'https://spider-society-nhfw.onrender.com';
+
 // Session Config (MemoryStore is sufficient for now, for production consider MongoStore)
 const sessionMiddleware = session({
     secret: process.env.SESSION_SECRET || 'spider_secret',
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: false } // Set to true if using HTTPS
+    cookie: {
+        secure: isProduction, // Secure in production
+        maxAge: 24 * 60 * 60 * 1000
+    }
 });
 
 app.use(sessionMiddleware);
@@ -44,6 +50,13 @@ app.use(passport.session());
 
 // In-memory session mapping (socket.id -> user._id/uid)
 const sessions = {};
+
+// ... (populateInitialContent function remains here, we skip it in replacement only if contiguous) ...
+// ACTUALLY, I cannot skip the function content if I want to keep the file valid.
+// I will just replace the top block and the strategy blocks separately to avoid huge replacements.
+
+// RE-STRATEGY: Use multi_replace to be surgical.
+
 
 // --- POPULATE INITIAL CONTENT ---
 async function populateInitialContent() {
@@ -112,7 +125,7 @@ passport.deserializeUser(async (id, done) => {
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "/auth/google/callback",
+    callbackURL: isProduction ? `${productionUrl}/auth/google/callback` : "/auth/google/callback",
     proxy: true
 }, async (accessToken, refreshToken, profile, done) => {
     try {
@@ -142,7 +155,7 @@ passport.use(new GoogleStrategy({
 passport.use(new GitHubStrategy({
     clientID: process.env.GITHUB_CLIENT_ID,
     clientSecret: process.env.GITHUB_CLIENT_SECRET,
-    callbackURL: "/auth/github/callback",
+    callbackURL: isProduction ? `${productionUrl}/auth/github/callback` : "/auth/github/callback",
     proxy: true
 }, async (accessToken, refreshToken, profile, done) => {
     try {
