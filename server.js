@@ -224,15 +224,28 @@ const upload = multer({ storage: storage });
 
 app.post('/upload', upload.single('file'), (req, res) => {
     if (!req.file) return res.status(400).json({ error: 'No file uploaded' });
-    const isImage = req.file.mimetype.startsWith('image/');
-    const isVideo = req.file.mimetype.startsWith('video/');
-    let type = 'file';
-    if (isImage) type = 'image';
-    if (isVideo) type = 'video';
     res.json({ url: `/uploads/${req.file.filename}`, type });
 });
 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+// Explicit Routes to prevent 404
+app.get('/', (req, res) => {
+    console.log('[SERVER] Serving index.html for root path');
+    const indexPath = path.join(__dirname, 'index.html');
+    if (require('fs').existsSync(indexPath)) {
+        res.sendFile(indexPath);
+    } else {
+        console.error('[SERVER] index.html NOT FOUND at ' + indexPath);
+        res.status(404).send('Site is running, but index.html is missing!');
+    }
+});
+
+app.get('/spiderlink', (req, res) => {
+    res.sendFile(path.join(__dirname, 'spiderlink.html'));
+});
+
+// Serve static files (CSS, JS, Images) - MUST BE AFTER explicit routes if they conflict, but here it's fine
 app.use(express.static(__dirname));
 
 // --- SOCKET.IO ---
