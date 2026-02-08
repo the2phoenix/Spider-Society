@@ -1,0 +1,28 @@
+{
+  "user_1770482617339": {
+    "uid": "user_1770482617339",
+    "email": "thephoenixoff@gmail.com",
+    "name": "Spider God",
+    "googleId": "111151610832095983078",
+    "hasProfile": true,
+    "password": null,
+    "isAdmin": true,
+    "earth": "Earth - 10876",
+    "lore": "Throughout my childhood, I've only looked to one other man than my father, and he is Spider-Man.  Many people lost their will to become a superhero or they accepted their fate, but... no me, I built my suit from the scratch and now I try to keep my city safe",
+    "avatar": "/uploads/avatar-1770483087265.jpeg",
+    "online": true
+  },
+  "user_1770525219612": {
+    "uid": "user_1770525219612",
+    "email": "arnesh.bhatt@gmail.com",
+    "name": "spider lord",
+    "googleId": "103647067511044992071",
+    "hasProfile": true,
+    "password": null,
+    "isAdmin": false,
+    "earth": "Earth-109354",
+    "lore": "just got bitten by a spider",
+    "avatar": "benreilly.png",
+    "online": true
+  }
+}

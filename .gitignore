@@ -1,0 +1,17 @@
+# Sensitive files (Credentials - NEVER COMMIT)
+.env
+.env.*
+*.log
+
+# Dependencies (Managed by package.json)
+node_modules/
+package-lock.json
+
+# Build artifacts
+dist/
+build/
+uploads/
+
+# OS specific
+.DS_Store
+Thumbs.db

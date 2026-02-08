@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spider-Man Scrolling Animation</title>
+
+    <!-- Google Fonts - Bebas Neue -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Scroll Indicator Removed -->
+
+    <!-- 3D Perspective Container -->
+    <div class="perspective-container">
+        <!-- Video Container with Tilt Effect -->
+        <div class="video-container" id="videoContainer">
+            <canvas id="hero-lightpass"></canvas>
+        </div>
+    </div>
+
+    <!-- Black Block for Text -->
+    <div class="text-block" id="textBlock">
+        <div class="text-overlay" id="textOverlay">
+            <h1>Welcome to the Spider-Verse</h1>
+            <a href="home.html" class="spider-btn">Let's Go 🕸️</a>
+        </div>
+    </div>
+
+    <!-- Scroll Spacer to create scrollable height -->
+    <div class="scroll-spacer"></div>
+
+    <script src="script.js"></script>
+
+    <!-- Transition Loader (Hidden by default) -->
+    <div id="transitionLoader" class="loader-container" style="display: none;">
+        <div class="loading-line" id="loadingLine"></div>
+        <div class="spider-loader"></div>
+    </div>
+
+    <!-- Transition Logic -->
+    <script>
+        document.querySelector('.spider-btn').addEventListener('click', function (e) {
+            e.preventDefault(); // Stop immediate navigation
+            const loader = document.getElementById('transitionLoader');
+            const line = document.getElementById('loadingLine');
+
+            loader.style.display = 'flex'; // Show loader overlay
+            line.classList.add('animate'); // Start progress bar
+
+            // Wait for 2 full animation cycles + initial delay
+            // 0.8s (delay) + 2s (cycle 1) + 2s (cycle 2) = 4.8s approx
+            // We'll set it to 4800ms to be safe and ensure the 2nd spin finishes
+            setTimeout(() => {
+                window.location.href = this.href;
+            }, 4800);
+        });
+    </script>
+</body>
+
+</html>

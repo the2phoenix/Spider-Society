@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpiderLink | Spider-Verse</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+    <!-- Socket.io Client -->
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+
+<body>
+    <div class="loading-line" id="pageLoadLine"></div>
+    <div class="loader-container" id="loaderContainer">
+        <div class="spider-loader"></div>
+    </div>
+
+    <div class="content-wrapper">
+        <header class="main-header">
+            <nav class="nav-links">
+                <a href="home.html">HOME</a>
+                <a href="about.html">ABOUT US</a>
+                <a href="missions.html">MISSIONS</a>
+                <a href="variants.html">VARIANTS</a>
+                <a href="canon_events.html">CANON EVENTS</a>
+                <a href="spiderlink.html" class="active">SPIDERLINK</a>
+            </nav>
+            <div class="auth-btn">
+                <span id="userDisplay"
+                    style="display:none; color: #0ff; font-family: 'Bebas Neue', sans-serif; margin-right: 20px;"></span>
+                <button id="logoutBtn" style="display:none;" class="join-btn">LOGOUT</button>
+            </div>
+        </header>
+
+        <div class="page-content" style="padding-top: 150px; padding-bottom: 50px;">
+            <!-- Hero Section -->
+            <div class="about-hero">
+                <h1 class="glitch glitch-lg shake-text" data-text="SPIDERLINK ACCESS"
+                    style="font-family: 'Bebas Neue', sans-serif; letter-spacing: 4px; color: white;">
+                    SPIDERLINK ACCESS
+                </h1>
+                <p style="font-family: 'Courier New', monospace; color: #0ff; letter-spacing: 2px; margin-top: 10px;">
+                    SECURE COMMUNICATION NETWORK // ENCRYPTED CHANNELS</p>
+            </div>
+
+            <div class="spiderlink-content">
+                <!-- LEFT COLUMN: Lore & Intro -->
+                <div class="spiderlink-intro">
+                    <h2 class="intro-title">THE MULTIVERSAL NEXUS</h2>
+                    <div class="intro-text">
+                        <p>Welcome, Agent. You are attempting to access the Spider-Society's secure neural network. This
+                            channel protects the integrity of the Great Web, allowing instantaneous communication across
+                            Earth-928, Earth-1610, Earth-65, and beyond.</p>
+                        <p>SpiderLink connects you directly to HQ. Here you can receive mission briefings, report
+                            anomalies, and coordinate with other Spiders in real-time. All transmissions are
+                            quantum-encrypted to prevent interception by the Inheritors or rogue organizations.</p>
+                        <p><strong>WARNING:</strong> Unauthorized access will trigger immediate tracking protocols. If
+                            you
+                            are not a registered Spider-Verse operative, disconnect immediately.</p>
+                    </div>
+
+                    <div class="network-status">
+                        <div class="status-item">
+                            <span>NETWORK STATUS:</span>
+                            <span class="status-valid">ONLINE</span>
+                        </div>
+                        <div class="status-item">
+                            <span>ENCRYPTION:</span>
+                            <span class="status-valid">QUANTUM-256</span>
+                        </div>
+                        <div class="status-item">
+                            <span>ACTIVE NODES:</span>
+                            <span class="status-valid">8,492</span>
+                        </div>
+                        <div class="status-item">
+                            <span>ANOMALIES DETECTED:</span>
+                            <span class="status-warn">47</span>
+                        </div>
+                    </div>
+
+                    <div class="spiderlink-visuals">
+                        <img src="miguel.png" alt="Miguel" class="visual-img" title="Admin">
+                        <img src="gwen.png" alt="Gwen" class="visual-img" title="Active">
+                        <img src="peter.png" alt="Peter B" class="visual-img" title="Active">
+                        <img src="spiderham.png" alt="Ham" class="visual-img" title="Active">
+                    </div>
+                </div>
+
+                <!-- RIGHT COLUMN: Auth Form (Embedded) -->
+                <div id="authScreen" class="spiderlink-auth">
+                    <div class="auth-container">
+                        <h1 class="auth-title glitch" data-text="LOGIN REQ.">LOGIN REQ.</h1>
+                        <p style="color: #666; margin-bottom: 20px; font-size: 0.8rem;">IDENTITY VERIFICATION REQUIRED
+                        </p>
+
+                        <div id="loginForm" class="auth-form">
+                            <input type="email" id="loginEmail" placeholder="Email" class="auth-input">
+                            <input type="password" id="loginPassword" placeholder="Password" class="auth-input">
+                            <a href="#" id="forgotPasswordBtn" class="forgot-password">Forgot Password?</a>
+
+                            <button id="loginBtn" class="auth-submit-btn">ACCESS TERMINAL</button>
+
+                            <div class="auth-separator">OR CONTINUE WITH</div>
+
+                            <div class="oauth-buttons">
+                                <a href="/auth/google" class="oauth-btn" style="text-decoration: none;">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg"
+                                        class="oauth-icon">
+                                    Google
+                                </a>
+                                <a href="/auth/github" class="oauth-btn" style="text-decoration: none;">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+                                        class="oauth-icon" style="filter: invert(1);">
+                                    GitHub
+                                </a>
+                            </div>
+
+                            <p style="color: #999; margin-top: 20px;">Don't have an account? <span id="showSignup"
+                                    style="cursor: pointer; color: #0ff;">Recruit Signup</span></p>
+                        </div>
+
+                        <div id="signupForm" class="auth-form" style="display: none;">
+                            <input type="email" id="signupEmail" placeholder="Email" class="auth-input">
+                            <input type="password" id="signupPassword" placeholder="Password (min 6 chars)"
+                                class="auth-input">
+                            <button id="signupBtn" class="auth-submit-btn">INITIATE RECRUITMENT</button>
+
+                            <div class="auth-separator">OR CONTINUE WITH</div>
+
+                            <div class="oauth-buttons">
+                                <a href="/auth/google" class="oauth-btn" style="text-decoration: none;">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg"
+                                        class="oauth-icon">
+                                    Google
+                                </a>
+                                <a href="/auth/github" class="oauth-btn" style="text-decoration: none;">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+                                        class="oauth-icon" style="filter: invert(1);">
+                                    GitHub
+                                </a>
+                            </div>
+
+                            <p style="color: #999; margin-top: 20px;">Already have an account? <span id="showLogin"
+                                    style="cursor: pointer; color: #0ff;">Login</span></p>
+                        </div>
+
+                        <p id="authError" style="color: #e62429; margin-top: 15px; display: none;"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Global Footer -->
+        <footer class="global-footer"
+            style="width: 100%; padding: 40px 20px; background: #0a0a0a; color: #666; font-family: sans-serif; font-size: 0.9rem; border-top: 1px solid #222; text-align: center;">
+            <div class="footer-content" style="max-width: 1200px; margin: 0 auto;">
+                <p>&copy; 2024 SPIDER-SOCIETY. All rights reserved.</p>
+                <div style="margin-top: 10px;">
+                    <a href="#" style="color: #666; margin: 0 10px; text-decoration: none;">Privacy Protocol</a>
+                    <a href="#" style="color: #666; margin: 0 10px; text-decoration: none;">Terms of Service</a>
+                </div>
+            </div>
+        </footer>
+
+        <!-- HIDDEN SECTIONS (Character Modal & Chat Interface) -->
+
+        <!-- Character Creation Modal -->
+        <div id="characterModal" class="character-modal" style="display: none;">
+            <div class="character-modal-content">
+                <h2 class="glitch" data-text="CREATE YOUR SPIDER-PERSONA">CREATE YOUR SPIDER-PERSONA</h2>
+                <p style="color: #0ff; margin-bottom: 30px;">DEFINE YOUR PLACE IN THE SPIDER-VERSE</p>
+
+                <div class="character-form">
+                    <label>SPIDER-PERSONA NAME *</label>
+                    <input type="text" id="characterName" placeholder="e.g., Spider-Punk, Web-Slinger, Arachno-Hero"
+                        class="char-input">
+
+                    <label>YOUR UNIVERSE *</label>
+                    <input type="text" id="characterEarth" placeholder="e.g., Earth-1610, Earth-928" class="char-input">
+
+                    <label>ORIGIN STORY / LORE *</label>
+                    <textarea id="characterLore" rows="4"
+                        placeholder="How did you become a Spider-Person? What defines your universe? Share your story..."
+                        class="char-input"></textarea>
+
+                    <label>SELECT AVATAR *</label>
+                    <input type="url" id="customAvatar" placeholder="OR Paste Image URL (https://...)"
+                        class="char-input" style="margin-bottom: 10px;">
+
+                    <div style="margin-bottom: 20px;">
+                        <label
+                            style="display:block; font-size: 0.9em; color: #0ff; margin-bottom: 5px; font-family: 'Courier New';">OR
+                            UPLOAD FILE</label>
+                        <input type="file" id="avatarUpload" accept="image/*" class="char-input"
+                            style="padding: 10px; background: rgba(0,255,255,0.1);">
+                    </div>
+                    <div class="avatar-grid">
+                        <img src="miles.png" alt="Miles" class="avatar-option" data-avatar="miles.png">
+                        <img src="gwen.png" alt="Gwen" class="avatar-option" data-avatar="gwen.png">
+                        <img src="peter.png" alt="Peter B" class="avatar-option" data-avatar="peter.png">
+                        <img src="miguel.png" alt="Miguel" class="avatar-option" data-avatar="miguel.png">
+                        <img src="pavitr.png" alt="Pavitr" class="avatar-option" data-avatar="pavitr.png">
+                        <img src="jessica.png" alt="Jessica" class="avatar-option" data-avatar="jessica.png">
+                        <img src="noir.png" alt="Noir" class="avatar-option" data-avatar="noir.png">
+                        <img src="peni.png" alt="Peni" class="avatar-option" data-avatar="peni.png">
+                        <img src="spiderham.png" alt="Spider-Ham" class="avatar-option" data-avatar="spiderham.png">
+                        <img src="benreilly.png" alt="Ben Reilly" class="avatar-option" data-avatar="benreilly.png">
+                        <img src="silk.png" alt="Silk" class="avatar-option" data-avatar="silk.png">
+                    </div>
+
+                    <button id="saveCharacterBtn" class="char-submit-btn">ENTER SPIDERLINK</button>
+                    <p id="characterError" style="color: #e62429; margin-top: 15px; display: none;"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SpiderLink Chat Interface -->
+        <div id="chatInterface" class="spiderlink-chat" style="display: none;">
+            <!-- Left Sidebar -->
+            <div class="chat-sidebar">
+                <div class="sidebar-header">
+                    <a href="home.html"
+                        style="display:block; margin-bottom:15px; text-decoration:none; color:#fff; background:#e62429; padding:8px; text-align:center; font-family:'Bebas Neue'; letter-spacing:1px; clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);">
+                        🏠 RETURN TO HQ
+                    </a>
+                    <h3 style="display:flex; justify-content:space-between; align-items:center;">
+                        CHANNELS
+                        <span id="addChannelBtn" style="cursor:pointer; font-size:1.2em; color: #0ff; transition: 0.3s;"
+                            title="Create Squad">+</span>
+                    </h3>
+                </div>
+                <div class="channel-list">
+                    <div class="channel-item" data-channel="rules" style="color: #e62429;">
+                        <span class="channel-icon">#</span>
+                        <span>rules</span>
+                    </div>
+                    <div class="channel-item active" data-channel="hq">
+                        <span class="channel-icon">#</span>
+                        <span>spider-society-hq</span>
+                    </div>
+                    <div class="channel-item" data-channel="lore-archive" style="color: #0ff;">
+                        <span class="channel-icon">#</span>
+                        <span>lore-archive</span>
+                    </div>
+                    <div class="channel-item" data-channel="missions-board">
+                        <span class="channel-icon">#</span>
+                        <span>missions-board</span>
+                    </div>
+                    <div class="channel-item" data-channel="tech-support">
+                        <span class="channel-icon">#</span>
+                        <span>tech-support</span>
+                    </div>
+                </div>
+
+                <div class="sidebar-header" style="margin-top: 30px;">
+                    <h3>DIRECT MESSAGES</h3>
+                </div>
+                <div id="dmList" class="dm-list">
+                    <p style="color: #666; padding: 10px; font-size: 0.9rem;">Click a member to start DM</p>
+                </div>
+            </div>
+
+            <!-- Main Chat Area -->
+            <div class="chat-main">
+                <div class="chat-header">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <div>
+                            <h2 id="currentChannelName"># spider-society-hq</h2>
+                            <p id="channelDescription">Main communication hub for all Spider-People</p>
+                        </div>
+                        <div id="adminControls" style="display: none;">
+                            <button id="adminAnnounceBtn"
+                                style="background: #e62429; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-family: 'Bebas Neue'; letter-spacing: 1px;">📢
+                                ANNOUNCE</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="messagesContainer" class="messages-container"></div>
+
+                <div class="message-input-container">
+                    <button id="emojiBtn" class="media-btn" title="Add Emoji">😀</button>
+                    <button id="attachBtn" class="media-btn" title="Attach Media">📎</button>
+                    <input type="file" id="chatFileUpload" style="display: none;" accept="image/*,video/*">
+
+                    <input type="text" id="messageInput" placeholder="Message #spider-society-hq" class="message-input">
+                    <button id="sendMessageBtn" class="send-btn">SEND</button>
+                    <div id="emojiPickerContainer"
+                        style="display:none; position: absolute; bottom: 80px; left: 20px; z-index: 1000;"></div>
+                </div>
+            </div>
+
+            <!-- Right Sidebar (Members) -->
+            <div class="chat-members">
+                <div class="members-header">
+                    <h3>MEMBERS</h3>
+                    <span id="memberCount">0</span>
+                </div>
+                <div id="membersList" class="members-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="channelModal" class="modal" style="display: none;">
+        <div class="modal-content" style="max-width: 400px; text-align: left;">
+            <h2 class="glitch-text" data-text="CREATE SQUAD">CREATE SQUAD</h2>
+            <div style="margin-bottom: 20px;">
+                <label>SQUAD NAME</label>
+                <input type="text" id="newChannelName" placeholder="e.g. Web Warriors" class="char-input">
+            </div>
+
+            <label>INVITE MEMBERS (Online)</label>
+            <label>INVITE MEMBERS (Online)</label>
+            <select id="channelMembersSelect" multiple class="char-input"
+                style="height: 120px; width: 100%; margin: 10px 0; background: rgba(0,0,0,0.5);">
+                <!-- Populated by JS -->
+            </select>
+            <p style="color: #666; font-size: 0.8rem; margin-bottom: 20px;">Hold CTRL to select multiple agents</p>
+
+            <div style="display:flex; gap:10px; margin-top:20px;">
+                <button id="createChannelConfirmBtn" class="comic-button" style="flex:1;">CREATE</button>
+                <button id="closeChannelModalBtn" class="comic-button" style="flex:1; background:#333;">CANCEL</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Generic Custom Modal -->
+    <div id="customModal" class="modal" style="display: none;">
+        <div class="modal-content" style="max-width: 400px; text-align: center;">
+            <h2 id="customModalTitle" class="glitch-text" data-text="ALERT">ALERT</h2>
+            <div id="customModalMessage" style="margin: 20px 0; font-size: 1.1em;"></div>
+            <div id="customModalActions" style="display:flex; gap:10px; justify-content: center;">
+                <button id="customModalOkBtn" class="comic-button" style="min-width: 100px;">OK</button>
+                <button id="customModalCancelBtn" class="comic-button"
+                    style="min-width: 100px; background:#333; display:none;">CANCEL</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PicMo Emoji Picker -->
+    <script src="https://cdn.jsdelivr.net/npm/picmo@latest/dist/umd/index.js"></script>
+    <script src="spiderlink.js"></script>
+</body>
+
+</html>

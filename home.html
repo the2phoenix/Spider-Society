@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Spider-Verse</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="loading-line" id="pageLoadLine"></div>
+    <div class="loader-container" id="loaderContainer">
+        <div class="spider-loader"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content-wrapper">
+        <!-- FIXED HEADER -->
+        <header class="main-header">
+            <nav class="nav-links">
+                <a href="home.html" class="active">HOME</a>
+                <a href="about.html">ABOUT US</a>
+                <a href="missions.html">MISSIONS</a>
+                <a href="variants.html">VARIANTS</a>
+                <a href="canon_events.html">CANON EVENTS</a>
+                <a href="http://localhost:3000/spiderlink.html">SPIDERLINK</a>
+            </nav>
+            <div class="auth-btn">
+                <a href="login.html" class="join-btn">JOIN THE WEB</a>
+            </div>
+        </header>
+
+        <!-- FIXED ANIMATION BACKGROUND -->
+        <!-- Starts 160px down to clear header -->
+        <div class="video-container"
+            style="position: fixed; top: 160px; left: 0; width: 100%; height: calc(100vh - 160px); z-index: 1;">
+            <canvas id="home-anim"></canvas>
+        </div>
+
+        <!-- RELATIVE SCROLL CONTENT -->
+        <!-- Rises over the fixed background -->
+        <div class="scroll-content" style="position: relative; z-index: 10; width: 100%;">
+            <!-- 1. Transparent Spacer for Animation duration -->
+            <div class="scroll-spacer" style="height: 6000px; pointer-events: none;"></div>
+
+            <!-- 2. Solid Black Footer Block -->
+            <!-- This will slide up and cover the animation -->
+            <div class="footer-section"
+                style="min-height: 100vh; background-color: #000000; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; padding-top: 200px; padding-bottom: 100px;">
+
+                <!-- Button Wrapper -->
+                <div class="button-wrapper" style="margin-bottom: 50px; text-align: center;">
+                    <p style="color: #fff; font-family: 'Bebas Neue', sans-serif; letter-spacing: 1px; margin-bottom: 20px; font-size: 1.5rem; opacity: 0;"
+                        id="ctaMsg">
+                        READY TO ACCEPT THE MISSION?
+                    </p>
+                    <a href="login.html" class="spider-btn" id="enterWebBtn"
+                        style="opacity: 0; transform: translateY(100px); transition: all 0.8s ease-out;">JOIN THE
+                        WEB</a>
+                </div>
+
+                <!-- New Copy Text -->
+                <div class="intro-copy"
+                    style="max-width: 800px; text-align: center; color: white; opacity: 0; transform: translateY(50px); transition: all 0.8s ease-out 0.2s;">
+                    <h2 class="glitch glitch-lg shake-text" data-text="ANYONE CAN WEAR THE MASK"
+                        style="font-family: 'Bebas Neue', sans-serif; letter-spacing: 2px; margin-bottom: 30px; line-height: 0.9;">
+                        ANYONE CAN WEAR THE MASK</h2>
+                    <p
+                        style="font-family: sans-serif; line-height: 1.8; color: #ddd; font-size: 1.2rem; text-shadow: 0 0 10px rgba(0,0,0,0.5);">
+                        It doesn't matter where you come from. It doesn't matter if you were bitten by a spider, or if
+                        you built your own suit.
+                        What matters is the choice to stand up. To fight for those who can't.
+                        The multiverse is fracturing, and we need every variation of the hero. <strong>We need
+                            you.</strong>
+                    </p>
+                </div>
+
+                <!-- Card Animation Section (Sticky) -->
+                <!-- We need a tall spacer to drive the unfolding -->
+                <div class="card-trigger-spacer"
+                    style="height: 300vh; position: relative; width: 100%; margin-top: 100px;">
+                    <div class="cards-sticky-wrapper"
+                        style="position: sticky; top: 0; height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+
+                        <!-- Cards Stack -->
+                        <div class="card" id="card1" style="z-index: 5; background: #e62429;">
+                            <div class="card-content">
+                                <h3 class="card-title">THE ORIGIN</h3>
+                                <p class="card-copy">The radioactive bite that started it all. Power and responsibility
+                                    combined.</p>
+                            </div>
+                        </div>
+                        <div class="card" id="card2" style="z-index: 4; background: #2a75bb;">
+                            <div class="card-content">
+                                <h3 class="card-title">MISSIONS</h3>
+                                <p class="card-copy">Protecting the multiverse from threats that no single Spider-Man
+                                    can face alone.</p>
+                            </div>
+                        </div>
+                        <div class="card" id="card3" style="z-index: 3; background: #f5a623;">
+                            <div class="card-content">
+                                <h3 class="card-title">VARIANTS</h3>
+                                <p class="card-copy">Infinite worlds, infinite possibilities. Meet the Spider-Society.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card" id="card4" style="z-index: 2; background: #ffffff;">
+                            <div class="card-content">
+                                <h3 class="card-title" style="color: #000;">SPIDERLINK</h3>
+                                <p class="card-copy" style="color: #333;">The inter-dimensional network keeping all
+                                    spiders connected.</p>
+                            </div>
+                        </div>
+                        <div class="card" id="card5" style="z-index: 1; background: #111; border: 1px solid #333;">
+                            <div class="card-content">
+                                <h3 class="card-title">CANON EVENTS</h3>
+                                <p class="card-copy">Destined moments that bind the spider-verse together. Disrupt at
+                                    your own risk.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Welcome CTA (Bottom) -->
+                <div class="welcome-cta" id="welcomeCta"
+                    style="min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: white; opacity: 0; transition: opacity 1s ease; padding: 20px 20px 100px 20px; background: rgba(0,0,0,0.8);">
+
+                    <h2 class="glitch" data-text="WELCOME TO THE SPIDER-SOCIETY"
+                        style="font-family: 'Bebas Neue', sans-serif; font-size: 3rem; margin-bottom: 30px; letter-spacing: 2px;">
+                        WELCOME TO THE SPIDER-SOCIETY
+                    </h2>
+
+                    <div
+                        style="font-family: sans-serif; font-size: 1.3rem; line-height: 1.8; color: #ccc; margin-bottom: 40px; max-width: 700px; text-shadow: 0 0 10px black;">
+                        <p>The signal is calling. Your dimension is just one of many.</p>
+                        <p>The web of life is under attack.</p>
+                        <p>The Spider-Society is the only thing standing between existence and total collapse.</p>
+                        <p style="margin-top: 20px; font-weight: bold; color: white; font-size: 1.5rem;">Are you ready
+                            to rewrite the canon?</p>
+                    </div>
+
+                    <h2 class="glitch" data-text="ENTER SPIDERLINK"
+                        style="font-family: 'Bebas Neue', sans-serif; font-size: 3.5rem; letter-spacing: 5px; color: #e62429; margin: 0; padding: 20px 0; text-shadow: 0 0 20px rgba(255, 255, 255, 0.4), 0 0 50px rgba(230, 36, 41, 0.9);">
+                        ENTER SPIDERLINK
+                    </h2>
+
+                    <!-- 4. Transmission Terminal -->
+                    <div class="terminal-block"
+                        style="margin-top: 60px; width: 100%; max-width: 500px; text-align: left;">
+                        <div
+                            style="background: rgba(0, 20, 0, 0.9); border: 1px solid #0f0; padding: 15px; font-family: 'Courier New', monospace; font-size: 0.9rem; color: #0f0; height: 150px; overflow: hidden; position: relative;">
+                            <div id="terminalText" style="white-space: pre-wrap; word-break: break-all;">Initializing
+                                Multiverse Scan...<br>Subject detected.<br>Analyzing bio-signature...<br></div>
+                            <div
+                                style="position: absolute; bottom: 0; left: 0; width: 100%; height: 30px; background: linear-gradient(to top, rgba(0,20,0,1), transparent);">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5. Signal Input -->
+                    <div class="signal-input"
+                        style="margin-top: 40px; display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
+                        <input type="text" id="signalCode" placeholder="ENTER ACCESS CODE"
+                            style="padding: 15px; background: black; border: 1px solid #333; color: white; font-family: 'Courier New', monospace; letter-spacing: 2px; width: 250px; outline: none; text-transform: uppercase;">
+                        <button id="decodeBtn" class="spider-btn"
+                            style="padding: 15px 30px; font-size: 1rem; min-width: auto; margin-top: 0;">DECODE</button>
+                    </div>
+                    <p id="signalResponse"
+                        style="margin-top: 10px; font-family: 'Courier New', monospace; color: #e62429; opacity: 0; transition: opacity 0.3s; letter-spacing: 2px; font-weight: bold;">
+                    </p>
+
+                    <!-- 6. Go Home Glitch Button -->
+                    <div class="go-home-container" style="margin-top: 60px; margin-bottom: 20px;">
+                        <button id="goHomeBtn" class="glitch-btn" title="System Reboot"
+                            style="background: transparent; border: 2px solid white; color: white; padding: 10px 20px; font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; cursor: pointer; letter-spacing: 2px; position: relative; overflow: hidden; transition: all 0.3s;">
+                            SYSTEM REBOOT
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 4. Global Footer -->
+                <footer class="global-footer"
+                    style="width: 100%; padding: 40px 20px; background: #0a0a0a; color: #666; font-family: sans-serif; font-size: 0.9rem; border-top: 1px solid #222; position: absolute; bottom: 0;">
+                    <div class="footer-content"
+                        style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+
+                        <!-- Copyright -->
+                        <div class="footer-left">
+                            &copy; 2024 SPIDER-SOCIETY. All rights reserved.
+                        </div>
+
+                        <!-- Links -->
+                        <div class="footer-links" style="display: flex; gap: 20px;">
+                            <a href="about.html"
+                                style="color: #888; text-decoration: none; transition: color 0.3s;">About</a>
+                            <a href="missions.html"
+                                style="color: #888; text-decoration: none; transition: color 0.3s;">Missions</a>
+                            <a href="#" style="color: #888; text-decoration: none; transition: color 0.3s;">Privacy</a>
+                            <a href="#" style="color: #888; text-decoration: none; transition: color 0.3s;">Terms</a>
+                        </div>
+
+                        <!-- Socials (Text based for now) -->
+                        <div class="footer-social" style="display: flex; gap: 15px;">
+                            <span style="cursor: pointer;">IG</span>
+                            <span style="cursor: pointer;">TW</span>
+                            <span style="cursor: pointer;">YT</span>
+                        </div>
+                    </div>
+                </footer>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="home_script.js"></script>
+
+    <script>
+        // PAGE LOAD LOGIC
+        window.addEventListener('load', () => {
+            const line = document.getElementById('pageLoadLine');
+            const loader = document.getElementById('loaderContainer');
+            const content = document.querySelector('.content-wrapper');
+
+            // Line animation
+            line.style.width = '0%';
+            line.style.transition = 'width 1s ease-out, opacity 0.5s ease 1s';
+
+            setTimeout(() => {
+                line.style.width = '100%';
+            }, 100);
+
+            // Hide loader and show content after line finishes
+            setTimeout(() => {
+                line.style.opacity = '0';
+                loader.style.opacity = '0'; // Fade out loader
+                setTimeout(() => {
+                    loader.style.display = 'none'; // Remove loader
+                    content.style.opacity = '1'; // Fade in content
+                }, 500);
+            }, 1100);
+        });
+    </script>
+    <audio id="hoverSound" src="audio/hover.mp3"></audio>
+    <audio id="clickSound" src="audio/click.mp3"></audio>
+</body>
+
+</html>

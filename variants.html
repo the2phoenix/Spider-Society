@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variants | Spider-Verse</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="loading-line" id="pageLoadLine"></div>
+    <div class="loader-container" id="loaderContainer">
+        <div class="spider-loader"></div>
+    </div>
+
+    <div class="content-wrapper">
+        <header class="main-header">
+            <nav class="nav-links">
+                <a href="home.html">HOME</a>
+                <a href="about.html">ABOUT US</a>
+                <a href="missions.html">MISSIONS</a>
+                <a href="variants.html" class="active">VARIANTS</a>
+                <a href="canon_events.html">CANON EVENTS</a>
+                <a href="http://localhost:3000/spiderlink.html">SPIDERLINK</a>
+            </nav>
+            <div class="auth-btn">
+                <a href="login.html" class="join-btn">JOIN THE WEB</a>
+            </div>
+        </header>
+
+        <div class="page-content" style="padding-top: 150px; padding-bottom: 50px;">
+            <!-- Hero Section -->
+            <div class="about-hero">
+                <h1 class="glitch glitch-lg shake-text" data-text="SPIDER-VARIANTS DATABASE"
+                    style="font-family: 'Bebas Neue', sans-serif; letter-spacing: 4px; color: white;">
+                    SPIDER-VARIANTS DATABASE
+                </h1>
+                <p style="font-family: 'Courier New', monospace; color: #0ff; letter-spacing: 2px; margin-top: 10px;">
+                    CATALOGING THE INFINITE WEB</p>
+                <p class="variant-counter" id="variantCounter">0 VARIANTS INDEXED</p>
+            </div>
+
+            <!-- Variant Categories -->
+            <div class="section-wrapper">
+                <h2 class="section-title">CLASSIFICATION SYSTEM</h2>
+            </div>
+            <div class="category-grid">
+                <div class="category-card">
+                    <h3>CANON-COMPLIANT</h3>
+                    <p>Standard Spider-People following their designated timeline without deviation. Core powers:
+                        web-slinging, wall-crawling, spider-sense.</p>
+                </div>
+                <div class="category-card">
+                    <h3>ALTERNATE POWERS</h3>
+                    <p>Variants with unique abilities beyond the standard set. Includes electricity manipulation
+                        (Miles), camouflage, venom strike, precognition.</p>
+                </div>
+                <div class="category-card">
+                    <h3>CROSS-SPECIES</h3>
+                    <p>Spider-powered individuals with distinct origins. Different universes, timelines, or dimensional
+                        variants with unique cultural backgrounds.</p>
+                </div>
+                <div class="category-card">
+                    <h3>HYBRIDS</h3>
+                    <p>Mixed powers or dual origins. Combination of Spider abilities with other power sources
+                        (symbiotes, genetic modifications, tech enhancements).</p>
+                </div>
+                <div class="category-card">
+                    <h3>DIVERGENT</h3>
+                    <p>Those who broke from their canon events. High risk of dimensional instability. Constant
+                        monitoring required.</p>
+                </div>
+                <div class="category-card">
+                    <h3>UNKNOWN ORIGIN</h3>
+                    <p>Mysterious or unclassified variants. Abilities don't match known Spider-Person profiles. Ongoing
+                        investigation.</p>
+                </div>
+            </div>
+
+            <!-- Featured Variants -->
+            <div class="section-wrapper">
+                <h2 class="section-title">REGISTERED VARIANTS</h2>
+            </div>
+            <div class="variants-grid">
+                <!-- Miles Morales -->
+                <div class="variant-card">
+                    <img src="miles.png" alt="Miles Morales" class="variant-img">
+                    <div class="variant-info">
+                        <div class="variant-earth">EARTH-1610</div>
+                        <h3>MILES MORALES</h3>
+                        <ul class="variant-powers">
+                            <li>Venom Strike</li>
+                            <li>Camouflage / Invisibility</li>
+                            <li>Enhanced Spider-Sense</li>
+                        </ul>
+                        <span class="variant-status active">ACTIVE</span>
+                    </div>
+                </div>
+
+                <!-- Gwen Stacy -->
+                <div class="variant-card">
+                    <img src="gwen.png" alt="Gwen Stacy" class="variant-img">
+                    <div class="variant-info">
+                        <div class="variant-earth">EARTH-65</div>
+                        <h3>GWEN STACY</h3>
+                        <ul class="variant-powers">
+                            <li>Ballet-Enhanced Agility</li>
+                            <li>Drummer / Musician</li>
+                            <li>Web-Shooters (Custom Pink)</li>
+                        </ul>
+                        <span class="variant-status active">ACTIVE</span>
+                    </div>
+                </div>
+
+                <!-- Peter B. Parker -->
+                <div class="variant-card">
+                    <img src="peter.png" alt="Peter B. Parker" class="variant-img">
+                    <div class="variant-info">
+                        <div class="variant-earth">EARTH-616</div>
+                        <h3>PETER B. PARKER</h3>
+                        <ul class="variant-powers">
+                            <li>Veteran Experience</li>
+                            <li>Mentor / Trainer</li>
+                            <li>Classic Web-Swinging</li>
+                        </ul>
+                        <span class="variant-status active">ACTIVE</span>
+                    </div>
+                </div>
+
+                <!-- Miguel O'Hara -->
+                <div class="variant-card">
+                    <img src="miguel.png" alt="Miguel O'Hara" class="variant-img">
+                    <div class="variant-info">
+                        <div class="variant-earth">EARTH-928</div>
+                        <h3>MIGUEL O'HARA</h3>
+                        <ul class="variant-powers">
+                            <li>Organic Webbing</li>
+                            <li>Talons & Fangs</li>
+                            <li>Accelerated Vision</li>
+                        </ul>
+                        <span class="variant-status active">ACTIVE</span>
+                    </div>
+                </div>
+
+                <!-- Hobie Brown -->
+                <div class="variant-card">
+                    <img src="hobie.jpg" alt="Hobie Brown" class="variant-img">
+                    <div class="variant-info">
+                        <div class="variant-earth">EARTH-138</div>
+                        <h3>HOBIE BROWN</h3>
+                        <ul class="variant-powers">
+                            <li>Anarchist Ideology</li>
+                            <li>Guitar Weaponry</li>
+                            <li>Dimensional Instability</li>
+                        </ul>
+                        <span class="variant-status rogue">ROGUE</span>
+                    </div>
+                </div>
+
+                <!-- Pavitr Prabhakar -->
+                <div class="variant-card">
+                    <img src="pavitr.png" alt="Pavitr Prabhakar" class="variant-img">
+                    <div class="variant-info">
+                        <div class="variant-earth">EARTH-50101</div>
+                        <h3>PAVITR PRABHAKAR</h3>
+                        <ul class="variant-powers">
+                            <li>Exceptional Agility</li>
+                            <li>Mumbattan Guardian</li>
+                            <li>Yoga-Based Combat</li>
+                        </ul>
+                        <span class="variant-status active">ACTIVE</span>
+                    </div>
+                </div>
+
+                <!-- Jessica Drew -->
+                <div class="variant-card">
+                    <img src="jessica.png" alt="Jessica Drew" class="variant-img">
+                    <div class="variant-info">
+                        <div class="variant-earth">EARTH-332</div>
+                        <h3>JESSICA DREW</h3>
+                        <ul class="variant-powers">
+                            <li>Enhanced Durability</li>
+                            <li>Motorcycle Combat</li>
+                            <li>Field Operations Lead</li>
+                        </ul>
+                        <span class="variant-status active">ACTIVE</span>
+                    </div>
+                </div>
+
+                <!-- Spider-Man Noir (B&W) -->
+                <div class="variant-card noir">
+                    <img src="noir.png" alt="Spider-Man Noir" class="variant-img">
+                    <div class="variant-info">
+                        <div class="variant-earth">EARTH-90214</div>
+                        <h3>SPIDER-MAN NOIR</h3>
+                        <ul class="variant-powers">
+                            <li>1930s Detective</li>
+                            <li>Dual Pistols</li>
+                            <li>Noir Aesthetic</li>
+                        </ul>
+                        <span class="variant-status active">ACTIVE</span>
+                    </div>
+                </div>
+
+                <!-- Peni Parker -->
+                <div class="variant-card">
+                    <img src="peni.png" alt="Peni Parker" class="variant-img">
+                    <div class="variant-info">
+                        <div class="variant-earth">EARTH-14512</div>
+                        <h3>PENI PARKER</h3>
+                        <ul class="variant-powers">
+                            <li>Psychic Link to SP//dr</li>
+                            <li>Mech Suit Piloting</li>
+                            <li>Anime Combat Style</li>
+                        </ul>
+                        <span class="variant-status active">ACTIVE</span>
+                    </div>
+                </div>
+
+                <!-- Spider-Ham -->
+                <div class="variant-card">
+                    <img src="spiderham.png" alt="Spider-Ham" class="variant-img">
+                    <div class="variant-info">
+                        <div class="variant-earth">EARTH-8311</div>
+                        <h3>PETER PORKER</h3>
+                        <ul class="variant-powers">
+                            <li>Cartoon Physics</li>
+                            <li>Mallet Summoning</li>
+                            <li>Toon Force</li>
+                        </ul>
+                        <span class="variant-status active">ACTIVE</span>
+                    </div>
+                </div>
+
+                <!-- Ben Reilly (using Peter's image as placeholder) -->
+                <div class="variant-card">
+                    <img src="benreilly.png" alt="Ben Reilly" class="variant-img">
+                    <div class="variant-info">
+                        <div class="variant-earth">EARTH-616 CLONE</div>
+                        <h3>BEN REILLY</h3>
+                        <ul class="variant-powers">
+                            <li>Genetic Clone</li>
+                            <li>Impact Webbing</li>
+                            <li>Scarlet Spider Suit</li>
+                        </ul>
+                        <span class="variant-status active">ACTIVE</span>
+                    </div>
+                </div>
+
+                <!-- Silk (Cindy Moon) -->
+                <div class="variant-card">
+                    <img src="silk.png" alt="Silk" class="variant-img">
+                    <div class="variant-info">
+                        <div class="variant-earth">EARTH-616</div>
+                        <h3>SILK (CINDY MOON)</h3>
+                        <ul class="variant-powers">
+                            <li>Organic Webbing</li>
+                            <li>Enhanced Spider-Sense</li>
+                            <li>Eidetic Memory</li>
+                        </ul>
+                        <span class="variant-status active">ACTIVE</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Variant Statistics -->
+            <div class="section-wrapper">
+                <h2 class="section-title">VARIANT STATISTICS</h2>
+            </div>
+            <div class="variant-stats">
+                <div class="stat-item">
+                    <span class="stat-value">3,847</span>
+                    <span class="stat-label">Total Variants</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">312</span>
+                    <span class="stat-label">Active Agents</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">10,000+</span>
+                    <span class="stat-label">Dimensions Mapped</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">23</span>
+                    <span class="stat-label">Rogue Variants</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">89</span>
+                    <span class="stat-label">Recruit Candidates</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">47</span>
+                    <span class="stat-label">Cross-Dimensional Teams</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">1,847</span>
+                    <span class="stat-label">Canon Events Monitored</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">99.2%</span>
+                    <span class="stat-label">Timeline Integrity</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">156</span>
+                    <span class="stat-label">Universes Protected</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">5,439</span>
+                    <span class="stat-label">Multi-Verse Jumps</span>
+                </div>
+            </div>
+
+            <!-- Registration CTA -->
+            <div class="register-section">
+                <h2>REGISTER YOUR SPIDER</h2>
+                <p>Are you a Spider-Person from another dimension? The Spider-Society is cataloging all variants across
+                    the multiverse. Join our database, connect with other Spider-People, and help protect the integrity
+                    of the Web of Life and Destiny.</p>
+                <a href="login.html" class="register-btn">JOIN THE DATABASE</a>
+            </div>
+        </div>
+
+        <!-- Global Footer -->
+        <footer class="global-footer"
+            style="width: 100%; padding: 40px 20px; background: #0a0a0a; color: #666; font-family: sans-serif; font-size: 0.9rem; border-top: 1px solid #222; text-align: center;">
+            <div class="footer-content" style="max-width: 1200px; margin: 0 auto;">
+                <p>&copy; 2024 SPIDER-SOCIETY. All rights reserved.</p>
+                <div style="margin-top: 10px;">
+                    <a href="#" style="color: #666; margin: 0 10px; text-decoration: none;">Privacy Protocol</a>
+                    <a href="#" style="color: #666; margin: 0 10px; text-decoration: none;">Terms of Service</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        window.addEventListener('load', () => {
+            const line = document.getElementById('pageLoadLine');
+            const loader = document.getElementById('loaderContainer');
+            const content = document.querySelector('.content-wrapper');
+
+            line.style.width = '0%';
+            line.style.transition = 'width 1s ease-out, opacity 0.5s ease 1s';
+
+            setTimeout(() => { line.style.width = '100%'; }, 100);
+
+            setTimeout(() => {
+                line.style.opacity = '0';
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                    content.style.opacity = '1';
+                }, 500);
+            }, 1100);
+        });
+
+        // Variant Counter Animation
+        function animateCounter(target, duration) {
+            const counter = document.getElementById('variantCounter');
+            const start = 0;
+            const increment = target / (duration / 16); // 60fps
+            let current = start;
+
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                counter.textContent = `${Math.floor(current).toLocaleString()} VARIANTS INDEXED`;
+            }, 16);
+        }
+
+        // Start counting after page loads
+        setTimeout(() => {
+            animateCounter(3847, 2000); // Count to 3847 over 2 seconds
+        }, 1500);
+
+        // Randomly increment counter every 5-10 seconds
+        setInterval(() => {
+            const counter = document.getElementById('variantCounter');
+            const currentMatch = counter.textContent.match(/(\d+)/);
+            if (currentMatch) {
+                const current = parseInt(currentMatch[1].replace(/,/g, ''));
+                const newValue = current + 1;
+                counter.textContent = `${newValue.toLocaleString()} VARIANTS INDEXED`;
+            }
+        }, Math.random() * 5000 + 5000);
+    </script>
+</body>
+
+</html>

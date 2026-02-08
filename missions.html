@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Missions | Spider-Verse</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="loading-line" id="pageLoadLine"></div>
+    <div class="loader-container" id="loaderContainer">
+        <div class="spider-loader"></div>
+    </div>
+
+    <div class="content-wrapper">
+        <header class="main-header">
+            <nav class="nav-links">
+                <a href="home.html">HOME</a>
+                <a href="about.html">ABOUT US</a>
+                <a href="missions.html" class="active">MISSIONS</a>
+                <a href="variants.html">VARIANTS</a>
+                <a href="canon_events.html">CANON EVENTS</a>
+                <a href="http://localhost:3000/spiderlink.html">SPIDERLINK</a>
+            </nav>
+            <div class="auth-btn">
+                <a href="login.html" class="join-btn">JOIN THE WEB</a>
+            </div>
+        </header>
+
+        <div class="page-content" style="padding-top: 150px; padding-bottom: 50px;">
+            <!-- Hero Section -->
+            <div class="about-hero">
+                <h1 class="glitch glitch-lg shake-text" data-text="ACTIVE MISSIONS"
+                    style="font-family: 'Bebas Neue', sans-serif; letter-spacing: 4px; color: white;">
+                    ACTIVE MISSIONS
+                </h1>
+                <p
+                    style="font-family: 'Courier New', monospace; color: #e62429; letter-spacing: 2px; margin-top: 10px;">
+                    PRIORITY ASSIGNMENTS // REAL-TIME UPDATES</p>
+                <p class="live-clock" id="liveClock">LOADING...</p>
+            </div>
+
+            <!-- Mission Statistics -->
+            <div class="section-wrapper">
+                <h2 class="section-title">OPERATIONAL STATISTICS</h2>
+            </div>
+            <div class="mission-stats">
+                <div class="stat-item">
+                    <span class="stat-value">847</span>
+                    <span class="stat-label">Total Missions</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">94.3%</span>
+                    <span class="stat-label">Success Rate</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">312</span>
+                    <span class="stat-label">Active Agents</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">10,000+</span>
+                    <span class="stat-label">Dimensions Monitored</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">1,203</span>
+                    <span class="stat-label">Anomalies Contained</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">489</span>
+                    <span class="stat-label">Canon Events Protected</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">23</span>
+                    <span class="stat-label">Rogue Agents Tracked</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">99.8%</span>
+                    <span class="stat-label">Timeline Stability</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">156</span>
+                    <span class="stat-label">Universes Saved</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">2,847</span>
+                    <span class="stat-label">Portal Jumps Today</span>
+                </div>
+            </div>
+
+            <!-- Priority Missions -->
+            <div class="section-wrapper">
+                <h2 class="section-title">PRIORITY ASSIGNMENTS</h2>
+            </div>
+            <div class="mission-grid">
+                <!-- Mission 1: Critical -->
+                <div class="mission-card">
+                    <div class="mission-code">MISSION-A47</div>
+                    <span class="priority-badge critical">CRITICAL PRIORITY</span>
+                    <h3>TRACK THE SPOT</h3>
+                    <div class="mission-location">📍 LOCATION: Earth-1610</div>
+                    <div class="mission-status">⚡ STATUS: IN PROGRESS</div>
+                    <div class="mission-assigned">👥 ASSIGNED: Squad Alpha (Miguel, Gwen, Peter B)</div>
+                    <p>Anomaly Jonathan Ohnn (The Spot) is creating unstable dimensional portals across Brooklyn.
+                        Immediate containment required before cascade failure.</p>
+                </div>
+
+                <!-- Mission 2: High -->
+                <div class="mission-card">
+                    <div class="mission-code">MISSION-B12</div>
+                    <span class="priority-badge high">HIGH PRIORITY</span>
+                    <h3>CANON EVENT #47 PROTECTION</h3>
+                    <div class="mission-location">📍 LOCATION: Earth-42069</div>
+                    <div class="mission-status">⚡ STATUS: MONITORING</div>
+                    <div class="mission-assigned">👥 ASSIGNED: Jessica Drew</div>
+                    <p>Critical Canon Event approaching. Ensure non-interference while maintaining observation
+                        protocols. Event must occur naturally.</p>
+                </div>
+
+                <!-- Mission 3: Medium -->
+                <div class="mission-card">
+                    <div class="mission-code">MISSION-C23</div>
+                    <span class="priority-badge medium">MEDIUM PRIORITY</span>
+                    <h3>DIMENSION BREACH REPAIR</h3>
+                    <div class="mission-location">📍 LOCATION: Earth-138 (Hobie's Dimension)</div>
+                    <div class="mission-status">⚡ STATUS: AWAITING DEPLOYMENT</div>
+                    <div class="mission-assigned">👥 ASSIGNED: Engineering Division</div>
+                    <p>Reality fabric destabilization detected in Sector 7. Deploy stabilization field generators before
+                        collapse threshold.</p>
+                </div>
+
+                <!-- Mission 4: Low -->
+                <div class="mission-card">
+                    <div class="mission-code">MISSION-D05</div>
+                    <span class="priority-badge low">LOW PRIORITY - COMPLETED</span>
+                    <h3>RECRUIT ASSESSMENT</h3>
+                    <div class="mission-location">📍 LOCATION: Earth-50101 (Mumbattan)</div>
+                    <div class="mission-status">⚡ STATUS: COMPLETED</div>
+                    <div class="mission-assigned">👥 ASSIGNED: Pavitr Prabhakar (now active member)</div>
+                    <p>Spider-Man India successfully evaluated. Demonstrates exceptional agility, canon compliance, and
+                        dimensional stability. APPROVED.</p>
+                </div>
+
+                <!-- Mission 5: Classified -->
+                <div class="mission-card">
+                    <div class="mission-code">MISSION-X██</div>
+                    <span class="priority-badge classified">CLASSIFIED</span>
+                    <h3>PROJECT ARACHNE</h3>
+                    <div class="mission-location">📍 LOCATION: [REDACTED]</div>
+                    <div class="mission-status">⚡ STATUS: NEED-TO-KNOW BASIS</div>
+                    <div class="mission-assigned">👥 ASSIGNED: Miguel O'Hara ONLY</div>
+                    <p>████████████████████████████. Clearance Level 10 required. Unauthorized access will result in
+                        immediate containment.</p>
+                </div>
+
+                <!-- Mission 6: High -->
+                <div class="mission-card">
+                    <div class="mission-code">MISSION-E88</div>
+                    <span class="priority-badge high">HIGH PRIORITY</span>
+                    <h3>SYMBIOTE CONTAINMENT</h3>
+                    <div class="mission-location">📍 LOCATION: Earth-616</div>
+                    <div class="mission-status">⚡ STATUS: ACTIVE</div>
+                    <div class="mission-assigned">👥 ASSIGNED: Specialized Containment Unit</div>
+                    <p>Venom symbiote detected bonding with unauthorized host. Containment protocols activated. Risk of
+                        multiverse contamination if not neutralized.</p>
+                </div>
+            </div>
+
+            <!-- Mission Log Terminal -->
+            <div class="section-wrapper">
+                <h2 class="section-title">MISSION LOG // LIVE FEED</h2>
+            </div>
+            <div class="mission-log">
+                <div class="log-container">
+                    <div class="log-entries-wrapper">
+                        <div class="log-entry"><span class="log-timestamp">[2024-02-07 16:45]</span> <span
+                                class="log-code">[MISSION-A47]</span> <span class="log-status">[ACTIVE]</span> Spot
+                            detected in Alchemax facility, pursuing</div>
+                        <div class="log-entry"><span class="log-timestamp">[2024-02-07 16:22]</span> <span
+                                class="log-code">[MISSION-B12]</span> <span class="log-status">[MONITORING]</span> Canon
+                            Event approaching critical window</div>
+                        <div class="log-entry"><span class="log-timestamp">[2024-02-07 15:58]</span> <span
+                                class="log-code">[MISSION-F19]</span> <span class="log-status">[COMPLETED]</span>
+                            Anomaly returned to Earth-928, breach sealed</div>
+                        <div class="log-entry"><span class="log-timestamp">[2024-02-07 15:34]</span> <span
+                                class="log-code">[MISSION-A47]</span> <span class="log-status">[UPDATE]</span>
+                            Dimensional signatures unstable, requesting backup</div>
+                        <div class="log-entry"><span class="log-timestamp">[2024-02-07 15:12]</span> <span
+                                class="log-code">[MISSION-D05]</span> <span class="log-status">[COMPLETED]</span> Pavitr
+                            Prabhakar approved for Society membership</div>
+                        <div class="log-entry"><span class="log-timestamp">[2024-02-07 14:47]</span> <span
+                                class="log-code">[MISSION-G33]</span> <span class="log-status">[ACTIVE]</span> Rogue
+                            element identified, deploying containment team</div>
+                        <div class="log-entry"><span class="log-timestamp">[2024-02-07 14:20]</span> <span
+                                class="log-code">[MISSION-C23]</span> <span class="log-status">[PENDING]</span>
+                            Engineering team en route to Earth-138</div>
+                        <div class="log-entry"><span class="log-timestamp">[2024-02-07 13:55]</span> <span
+                                class="log-code">[MISSION-H41]</span> <span class="log-status">[ALERT]</span> Multiple
+                            dimensional breaches detected in Sector 9</div>
+                        <div class="log-entry"><span class="log-timestamp">[2024-02-07 13:30]</span> <span
+                                class="log-code">[MISSION-B12]</span> <span class="log-status">[UPDATE]</span> Jessica
+                            Drew confirms eyes on Canon Event subject</div>
+                        <div class="log-entry"><span class="log-timestamp">[2024-02-07 13:05]</span> <span
+                                class="log-code">[MISSION-X██]</span> <span class="log-status">[CLASSIFIED]</span>
+                            ████████████████████</div>
+                        <div class="log-entry"><span class="log-timestamp">[2024-02-07 12:42]</span> <span
+                                class="log-code">[MISSION-A47]</span> <span class="log-status">[INITIATED]</span> Squad
+                            Alpha deployed to Earth-1610</div>
+                        <div class="log-entry"><span class="log-timestamp">[2024-02-07 12:18]</span> <span
+                                class="log-code">[MISSION-K77]</span> <span class="log-status">[COMPLETED]</span>
+                            Symbiote threat neutralized on Earth-616</div>
+                        <!-- Duplicate entries for seamless loop -->
+                        <div class="log-entry"><span class="log-timestamp">[2024-02-07 16:45]</span> <span
+                                class="log-code">[MISSION-A47]</span> <span class="log-status">[ACTIVE]</span> Spot
+                            detected in Alchemax facility, pursuing</div>
+                        <div class="log-entry"><span class="log-timestamp">[2024-02-07 16:22]</span> <span
+                                class="log-code">[MISSION-B12]</span> <span class="log-status">[MONITORING]</span> Canon
+                            Event approaching critical window</div>
+                        <div class="log-entry"><span class="log-timestamp">[2024-02-07 15:58]</span> <span
+                                class="log-code">[MISSION-F19]</span> <span class="log-status">[COMPLETED]</span>
+                            Anomaly returned to Earth-928, breach sealed</div>
+                        <div class="log-entry"><span class="log-timestamp">[2024-02-07 15:34]</span> <span
+                                class="log-code">[MISSION-A47]</span> <span class="log-status">[UPDATE]</span>
+                            Dimensional signatures unstable, requesting backup</div>
+                        <div class="log-entry"><span class="log-timestamp">[2024-02-07 15:12]</span> <span
+                                class="log-code">[MISSION-D05]</span> <span class="log-status">[COMPLETED]</span> Pavitr
+                            Prabhakar approved for Society membership</div>
+                        <div class="log-entry"><span class="log-timestamp">[2024-02-07 14:47]</span> <span
+                                class="log-code">[MISSION-G33]</span> <span class="log-status">[ACTIVE]</span> Rogue
+                            element identified, deploying containment team</div>
+                        <div class="log-entry"><span class="log-timestamp">[2024-02-07 14:20]</span> <span
+                                class="log-code">[MISSION-C23]</span> <span class="log-status">[PENDING]</span>
+                            Engineering team en route to Earth-138</div>
+                        <div class="log-entry"><span class="log-timestamp">[2024-02-07 13:55]</span> <span
+                                class="log-code">[MISSION-H41]</span> <span class="log-status">[ALERT]</span> Multiple
+                            dimensional breaches detected in Sector 9</div>
+                        <div class="log-entry"><span class="log-timestamp">[2024-02-07 13:30]</span> <span
+                                class="log-code">[MISSION-B12]</span> <span class="log-status">[UPDATE]</span> Jessica
+                            Drew confirms eyes on Canon Event subject</div>
+                        <div class="log-entry"><span class="log-timestamp">[2024-02-07 13:05]</span> <span
+                                class="log-code">[MISSION-X██]</span> <span class="log-status">[CLASSIFIED]</span>
+                            ████████████████████</div>
+                        <div class="log-entry"><span class="log-timestamp">[2024-02-07 12:42]</span> <span
+                                class="log-code">[MISSION-A47]</span> <span class="log-status">[INITIATED]</span> Squad
+                            Alpha deployed to Earth-1610</div>
+                        <div class="log-entry"><span class="log-timestamp">[2024-02-07 12:18]</span> <span
+                                class="log-code">[MISSION-K77]</span> <span class="log-status">[COMPLETED]</span>
+                            Symbiote threat neutralized on Earth-616</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Threat Assessment -->
+            <div class="section-wrapper">
+                <h2 class="section-title">THREAT ASSESSMENT</h2>
+            </div>
+            <div class="threat-grid">
+                <div class="threat-card">
+                    <h3>DIMENSIONAL ANOMALIES</h3>
+                    <p>High-risk individuals displaced from their native dimensions. Current count: 47 active. Primary
+                        target: The Spot (Jonathan Ohnn). Extreme dimensional instability detected.</p>
+                </div>
+                <div class="threat-card">
+                    <h3>REALITY BREACHES</h3>
+                    <p>Unstable focal points where dimensional barriers are weakening. 12 critical zones identified.
+                        Immediate repair required in Sectors 7, 9, and 14 before cascade failure.</p>
+                </div>
+                <div class="threat-card">
+                    <h3>CANON DISRUPTORS</h3>
+                    <p>Individuals attempting to alter fixed events. 3 active cases. Most recent: Miles Morales
+                        (Earth-1610). WATCH LIST: Potential intervention in Canon Event #47.</p>
+                </div>
+                <div class="threat-card">
+                    <h3>ROGUE ELEMENTS</h3>
+                    <p>Ex-Society members or independents resisting protocols. Status: 2 confirmed. Known associates:
+                        Classified. Operating independently across multiple dimensions.</p>
+                </div>
+                <div class="threat-card">
+                    <h3>SYMBIOTE THREATS</h3>
+                    <p>Alien symbiotes spreading across dimensions. 8 active cases. High risk of uncontrolled mutation
+                        and aggressive host behavior. Containment teams deployed.</p>
+                </div>
+                <div class="threat-card">
+                    <h3>TIMELINE ANOMALIES</h3>
+                    <p>Temporal distortions causing paradoxes and duplicate entities. 5 paradox events detected. Risk:
+                        Complete timeline collapse if left unchecked.</p>
+                </div>
+            </div>
+
+            <!-- Volunteer CTA -->
+            <div class="volunteer-section">
+                <h2>JOIN THE NEXT DEPLOYMENT</h2>
+                <p>The multiverse is fracturing faster than we can contain it. Every dimension, every timeline, every
+                    life hangs in the balance. We need agents who understand the weight of this responsibility. If you
+                    have the power to make a difference, we need you on the front lines.</p>
+                <a href="login.html" class="volunteer-btn">VOLUNTEER FOR ASSIGNMENT</a>
+            </div>
+        </div>
+
+        <!-- Global Footer -->
+        <footer class="global-footer"
+            style="width: 100%; padding: 40px 20px; background: #0a0a0a; color: #666; font-family: sans-serif; font-size: 0.9rem; border-top: 1px solid #222; text-align: center;">
+            <div class="footer-content" style="max-width: 1200px; margin: 0 auto;">
+                <p>&copy; 2024 SPIDER-SOCIETY. All rights reserved.</p>
+                <div style="margin-top: 10px;">
+                    <a href="#" style="color: #666; margin: 0 10px; text-decoration: none;">Privacy Protocol</a>
+                    <a href="#" style="color: #666; margin: 0 10px; text-decoration: none;">Terms of Service</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        window.addEventListener('load', () => {
+            const line = document.getElementById('pageLoadLine');
+            const loader = document.getElementById('loaderContainer');
+            const content = document.querySelector('.content-wrapper');
+
+            line.style.width = '0%';
+            line.style.transition = 'width 1s ease-out, opacity 0.5s ease 1s';
+
+            setTimeout(() => { line.style.width = '100%'; }, 100);
+
+            setTimeout(() => {
+                line.style.opacity = '0';
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                    content.style.opacity = '1';
+                }, 500);
+            }, 1100);
+        });
+
+        // Live Clock (updates every second)
+        function updateClock() {
+            const now = new Date();
+            const options = {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false
+            };
+            const timeString = now.toLocaleString('en-US', options).replace(',', ' //');
+            document.getElementById('liveClock').textContent = `SYSTEM TIME: ${timeString}`;
+        }
+
+        // Update clock immediately and then every second
+        updateClock();
+        setInterval(updateClock, 1000);
+    </script>
+</body>
+
+</html>

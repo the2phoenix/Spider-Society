@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Spider-Verse</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="loading-line" id="pageLoadLine"></div>
+    <div class="loader-container" id="loaderContainer">
+        <div class="spider-loader"></div>
+    </div>
+
+    <!-- Main Content (Hidden initially) -->
+    <div class="content-wrapper">
+        <header class="main-header">
+            <nav class="nav-links">
+                <a href="home.html">HOME</a>
+                <a href="about.html">ABOUT US</a>
+                <a href="missions.html">MISSIONS</a>
+                <a href="variants.html">VARIANTS</a>
+                <a href="canon_events.html">CANON EVENTS</a>
+                <a href="http://localhost:3000/spiderlink.html">SPIDERLINK</a>
+            </nav>
+            <div class="auth-btn">
+                <a href="login.html" class="join-btn active-btn">JOIN THE WEB</a>
+            </div>
+        </header>
+
+        <div class="page-content center-content">
+            <h1>Login Restricted</h1>
+        </div>
+    </div>
+
+    <script>
+        // Use the same loading logic as other pages
+        window.addEventListener('load', () => {
+            const line = document.getElementById('pageLoadLine');
+            const loader = document.getElementById('loaderContainer');
+            const content = document.querySelector('.content-wrapper');
+
+            // Line animation
+            line.style.width = '0%';
+            line.style.transition = 'width 1s ease-out, opacity 0.5s ease 1s';
+
+            setTimeout(() => {
+                line.style.width = '100%';
+            }, 100);
+
+            // Hide loader and show content
+            setTimeout(() => {
+                line.style.opacity = '0';
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                    content.style.opacity = '1';
+                }, 500);
+            }, 1100);
+        });
+    </script>
+</body>
+
+</html>
