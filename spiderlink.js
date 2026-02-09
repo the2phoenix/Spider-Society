@@ -1,5 +1,8 @@
-// Socket.io connection
-const socket = io();
+// Socket.io connection (Force websocket/polling for Render stability)
+const socket = io({
+    transports: ['websocket', 'polling'],
+    withCredentials: true
+});
 
 // Connection error handling
 socket.on('connect_error', (error) => {

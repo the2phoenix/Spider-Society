@@ -27,12 +27,27 @@ mongoose.connect(process.env.MONGODB_URI)
         // Reset online status on startup
         await User.updateMany({}, { online: false });
         populateInitialContent();
+        fixAvatars(); // Auto-fix existing messages
     })
     .catch(err => console.error('❌ MongoDB Connection Error:', err));
 
+async function fixAvatars() {
+    try {
+        await Message.updateMany({ username: "MIGUEL O'HARA" }, { avatar: 'miguel.png' });
+        await Message.updateMany({ username: 'LYLA' }, { avatar: 'lyla.png' });
+        await Message.updateMany({ username: '🕷️ ARCHIVE BOT' }, { avatar: 'lyla.png' });
+        // Also fix Admin messages if needed
+        const adminUser = await User.findOne({ email: process.env.ADMIN_EMAIL });
+        if (adminUser) {
+            await Message.updateMany({ userId: adminUser._id }, { avatar: ADMIN_PFP });
+        }
+        console.log('✅ Fixed System Avatars');
+    } catch (e) { console.error('Fix Avatar Error:', e); }
+}
+
 const isProduction = process.env.NODE_ENV === 'production' || process.env.RENDER;
 const productionUrl = 'https://spider-society-nhfw.onrender.com';
-const ADMIN_PFP = 'my pfp.jpeg';
+const ADMIN_PFP = 'admin.jpg';
 
 // Session Config (MemoryStore is sufficient for now, for production consider MongoStore)
 const sessionMiddleware = session({
@@ -51,6 +66,13 @@ app.use(passport.session());
 
 // In-memory session mapping (socket.id -> user._id/uid)
 const sessions = {};
+
+// ... (populateInitialContent function remains here, we skip it in replacement only if contiguous) ...
+// ACTUALLY, I cannot skip the function content if I want to keep the file valid.
+// I will just replace the top block and the strategy blocks separately to avoid huge replacements.
+
+// RE-STRATEGY: Use multi_replace to be surgical.
+
 
 // ... (populateInitialContent function remains here, we skip it in replacement only if contiguous) ...
 // ACTUALLY, I cannot skip the function content if I want to keep the file valid.
@@ -94,7 +116,7 @@ async function populateInitialContent() {
                 channelId: 'missions-board',
                 userId: 'SYSTEM',
                 username: "MIGUEL O'HARA",
-                avatar: 'https://upload.wikimedia.org/wikipedia/en/thumb/8/82/Miguel_O%27Hara_%28Spider-Man_2099%29.png/220px-Miguel_O%27Hara_%28Spider-Man_2099%29.png',
+                avatar: 'miguel.png',
                 text: "⚠️ **ANOMALY DETECTED**\n**Location:** Earth-65\n**Threat Level:** 4\n**Target:** Vulture (Variant)\n**Status:** OPEN - NEED 2 AGENTS",
                 timestamp: Date.now()
             });
@@ -437,7 +459,7 @@ io.on('connection', (socket) => {
                 channelId: 'lore-archive',
                 userId: 'SYSTEM',
                 username: '🕷️ ARCHIVE BOT',
-                avatar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Spider-Man_emblem.svg/1024px-Spider-Man_emblem.svg.png',
+                avatar: 'lyla.png',
                 text: `[NEW ENTRY] **${data.name}** (${data.earth})\n\n${data.lore}`,
                 timestamp: Date.now()
             });
@@ -500,7 +522,7 @@ io.on('connection', (socket) => {
             channelId: data.channel,
             userId: user._id,
             username: user.name,
-            avatar: user.avatar,
+            avatar: (user.email === process.env.ADMIN_EMAIL) ? ADMIN_PFP : user.avatar,
             text: data.text || '',
             imageUrl: data.mediaUrl || null,
             type: data.mediaType || 'text',
