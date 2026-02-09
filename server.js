@@ -412,7 +412,8 @@ io.on('connection', (socket) => {
             name: u.name,
             earth: u.earth,
             avatar: u.avatar,
-            online: u.online
+            online: u.online,
+            isAdmin: u.email === process.env.ADMIN_EMAIL
         })));
     });
 
@@ -429,7 +430,8 @@ io.on('connection', (socket) => {
                 // Broadcast
                 const onlineUsers = await User.find({ hasProfile: true, online: true });
                 io.emit('membersUpdate', onlineUsers.map(u => ({
-                    uid: u._id, name: u.name, earth: u.earth, avatar: u.avatar, online: true
+                    uid: u._id, name: u.name, earth: u.earth, avatar: u.avatar, online: true,
+                    isAdmin: u.email === process.env.ADMIN_EMAIL
                 })));
 
                 socket.emit('permissions', { isAdmin: user.email === process.env.ADMIN_EMAIL });
