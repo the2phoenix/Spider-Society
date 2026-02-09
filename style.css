@@ -2878,3 +2878,17 @@ canvas {
     color: #e62429;
     transform: scale(1.05);
 }
+
+/* ===== ADMIN BADGE ===== */
+.admin-badge {
+    background-color: #e62429;
+    color: white;
+    font-size: 0.7em;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 8px;
+    vertical-align: middle;
+    letter-spacing: 0.05em;
+    box-shadow: 0 0 5px rgba(230, 36, 41, 0.5);
+}

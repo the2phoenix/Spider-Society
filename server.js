@@ -32,6 +32,7 @@ mongoose.connect(process.env.MONGODB_URI)
 
 const isProduction = process.env.NODE_ENV === 'production' || process.env.RENDER;
 const productionUrl = 'https://spider-society-nhfw.onrender.com';
+const ADMIN_PFP = 'my pfp.jpeg';
 
 // Session Config (MemoryStore is sufficient for now, for production consider MongoStore)
 const sessionMiddleware = session({
@@ -269,12 +270,17 @@ io.on('connection', (socket) => {
     console.log('New client connected:', socket.id);
 
     // JOIN CHANNEL
+    // JOIN CHANNEL
     socket.on('joinChannel', async (channelId) => {
         socket.join(channelId);
         // Load last 50 messages
         const messages = await Message.find({ channelId: channelId })
             .sort({ timestamp: 1 })
             .limit(100);
+
+        // Fetch Admin User for comparison
+        const adminUser = await User.findOne({ email: process.env.ADMIN_EMAIL });
+        const adminId = adminUser ? adminUser._id.toString() : null;
 
         socket.emit('messageHistory', messages.map(m => ({
             id: m._id,
@@ -284,7 +290,8 @@ io.on('connection', (socket) => {
             text: m.text,
             mediaUrl: m.imageUrl, // Map to legacy field name for frontend compatibility
             timestamp: m.timestamp.getTime(),
-            channel: m.channelId
+            channel: m.channelId,
+            isAdmin: (m.userId && adminId && m.userId.toString() === adminId)
         })));
     });
 
@@ -417,7 +424,11 @@ io.on('connection', (socket) => {
             user.name = data.name;
             user.earth = data.earth;
             user.lore = data.lore;
-            user.avatar = data.avatar;
+            if (user.email === process.env.ADMIN_EMAIL) {
+                user.avatar = ADMIN_PFP;
+            } else {
+                user.avatar = data.avatar;
+            }
             user.hasProfile = true;
             await user.save();
 
@@ -461,7 +472,8 @@ io.on('connection', (socket) => {
                     uid: user._id,
                     hasProfile: user.hasProfile,
                     profile: user.hasProfile ? {
-                        name: user.name, earth: user.earth, lore: user.lore, avatar: user.avatar,
+                        name: user.name, earth: user.earth, lore: user.lore,
+                        avatar: (user.email === process.env.ADMIN_EMAIL) ? ADMIN_PFP : user.avatar,
                         isAdmin: user.email === process.env.ADMIN_EMAIL
                     } : null
                 });
@@ -506,7 +518,8 @@ io.on('connection', (socket) => {
                 text: msg.text,
                 mediaUrl: msg.imageUrl,
                 timestamp: msg.timestamp.getTime(),
-                channel: msg.channelId
+                channel: msg.channelId,
+                isAdmin: user.email === process.env.ADMIN_EMAIL
             }
         });
     });

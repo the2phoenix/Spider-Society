@@ -635,7 +635,7 @@ function appendMessage(msg) {
         <img src="${msg.userAvatar}" alt="${msg.userName}" class="message-avatar">
         <div class="message-content">
             <div class="message-header">
-                <span class="message-author">${msg.userName}</span>
+                <span class="message-author">${msg.userName} ${msg.isAdmin ? '<span class="admin-badge">ADMIN</span>' : ''}</span>
                 <span class="message-earth">${msg.userEarth}</span>
                 <span class="message-timestamp">${new Date(msg.timestamp).toLocaleTimeString()}</span>
                 ${canDelete ? `<button class="delete-msg-btn" title="Delete Message" onclick="deleteMessage(${msg.id})">🗑️</button>` : ''}
