@@ -1004,6 +1004,18 @@ socket.on('membersUpdate', (members) => {
     updateMembersList(members);
 });
 
+socket.on('messageDeleted', (data) => {
+    console.log("[DEBUG] Message deleted:", data);
+    if (currentChannel === data.channel) {
+        const msgElement = document.getElementById(`msg-${data.messageId}`);
+        if (msgElement) {
+            msgElement.style.transition = "opacity 0.5s";
+            msgElement.style.opacity = "0";
+            setTimeout(() => msgElement.remove(), 500);
+        }
+    }
+});
+
 socket.on('announcement', (data) => {
     const container = document.getElementById('messagesContainer');
     const msgDiv = document.createElement('div');
