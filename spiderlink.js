@@ -904,7 +904,11 @@ window.deleteMessage = function (msgId) {
             messageId: msgId
         }, (res) => {
             console.log("Delete response:", res);
-            if (!res.success) showPopup("ERROR", "Error deleting message: " + res.error);
+            if (res.success) {
+                // Success handled by socket event
+            } else {
+                showPopup("ERROR", "Error deleting message: " + (res.error || "Unknown"));
+            }
         });
     });
 };
@@ -939,9 +943,13 @@ function updateMembersList(members) {
                 item.style.border = '1px solid #e62429';
             }
             item.innerHTML = `
-                <img src="${member.avatar}" alt="${member.name}" class="member-avatar">
+                <img src="${member.isAdmin ? 'admin.jpg' : member.avatar}" alt="${member.name}" class="member-avatar">
                 <div class="member-info">
-                    <div class="member-name">${member.name} ${member.uid === currentUser?.uid ? '(YOU)' : ''}</div>
+                    <div class="member-name">
+                        ${member.name} 
+                        ${member.uid === currentUser?.uid ? '(YOU)' : ''}
+                        ${member.isAdmin ? '<span style="background:#e62429; color:white; padding:2px 4px; border-radius:3px; font-size:0.7em; margin-left:5px; vertical-align:middle;">ADMIN</span>' : ''}
+                    </div>
                     <div class="member-earth">${member.earth}</div>
                 </div>
                 <div class="member-status ${member.online ? 'online' : 'offline'}"></div>
@@ -990,6 +998,9 @@ function updateMembersList(members) {
 
 // Global Socket Events
 socket.on('membersUpdate', (members) => {
+    console.log("[DEBUG] membersUpdate received:", members);
+    const me = members.find(m => m.uid === currentUser?.uid);
+    if (me) console.log("[DEBUG] My Admin Status:", me.isAdmin);
     updateMembersList(members);
 });
 

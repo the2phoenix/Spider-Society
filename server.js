@@ -310,12 +310,25 @@ io.on('connection', (socket) => {
             userName: m.username,
             userAvatar: m.avatar,
             text: m.text,
-            mediaUrl: m.imageUrl, // Map to legacy field name for frontend compatibility
+            mediaUrl: m.imageUrl,
             timestamp: m.timestamp.getTime(),
             channel: m.channelId,
             isAdmin: (m.userId && adminId && m.userId.toString() === adminId)
         })));
     });
+
+    // Helper to broadcast members list
+    const broadcastMembersUpdate = async () => {
+        const onlineUsers = await User.find({ hasProfile: true, online: true });
+        io.emit('membersUpdate', onlineUsers.map(u => ({
+            uid: u._id,
+            name: u.name,
+            earth: u.earth,
+            avatar: u.avatar,
+            online: true,
+            isAdmin: u.email === process.env.ADMIN_EMAIL
+        })));
+    };
 
     // GET CHANNELS
     socket.on('getChannels', async (callback) => {
@@ -428,11 +441,7 @@ io.on('connection', (socket) => {
                 await user.save();
 
                 // Broadcast
-                const onlineUsers = await User.find({ hasProfile: true, online: true });
-                io.emit('membersUpdate', onlineUsers.map(u => ({
-                    uid: u._id, name: u.name, earth: u.earth, avatar: u.avatar, online: true,
-                    isAdmin: u.email === process.env.ADMIN_EMAIL
-                })));
+                await broadcastMembersUpdate();
 
                 socket.emit('permissions', { isAdmin: user.email === process.env.ADMIN_EMAIL });
             }
@@ -468,11 +477,7 @@ io.on('connection', (socket) => {
             });
 
             // Update members list
-            const onlineUsers = await User.find({ hasProfile: true, online: true });
-            io.emit('membersUpdate', onlineUsers.map(u => ({
-                uid: u._id, name: u.name, earth: u.earth, avatar: u.avatar, online: true,
-                isAdmin: u.email === process.env.ADMIN_EMAIL
-            })));
+            await broadcastMembersUpdate();
 
             callback({ success: true });
         } catch (e) { callback({ success: false, error: e.message }); }
@@ -488,11 +493,7 @@ io.on('connection', (socket) => {
                 await user.save();
 
                 // Broadcast
-                const onlineUsers = await User.find({ hasProfile: true, online: true });
-                io.emit('membersUpdate', onlineUsers.map(u => ({
-                    uid: u._id, name: u.name, earth: u.earth, avatar: u.avatar, online: true,
-                    isAdmin: u.email === process.env.ADMIN_EMAIL
-                })));
+                await broadcastMembersUpdate();
 
                 callback({
                     success: true,
@@ -556,11 +557,7 @@ io.on('connection', (socket) => {
         const uid = sessions[socket.id];
         if (uid) {
             await User.findByIdAndUpdate(uid, { online: true });
-            const onlineUsers = await User.find({ hasProfile: true, online: true });
-            io.emit('membersUpdate', onlineUsers.map(u => ({
-                uid: u._id, name: u.name, earth: u.earth, avatar: u.avatar, online: true,
-                isAdmin: u.email === process.env.ADMIN_EMAIL
-            })));
+            await broadcastMembersUpdate();
         }
     });
 
@@ -590,12 +587,7 @@ io.on('connection', (socket) => {
         if (uid) {
             await User.findByIdAndUpdate(uid, { online: false });
             delete sessions[socket.id];
-
-            const onlineUsers = await User.find({ hasProfile: true, online: true });
-            io.emit('membersUpdate', onlineUsers.map(u => ({
-                uid: u._id, name: u.name, earth: u.earth, avatar: u.avatar, online: true,
-                isAdmin: u.email === process.env.ADMIN_EMAIL
-            })));
+            await broadcastMembersUpdate();
         }
     });
 });
